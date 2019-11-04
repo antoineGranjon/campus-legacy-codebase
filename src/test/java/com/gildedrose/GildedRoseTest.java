@@ -55,11 +55,12 @@ class GildedRoseTest {
     @Test
     void conjured() {
         Item[] items = new Item[]{
-                new Item("Conjured thing", 10, 10)};
+                new Item("Conjured Mana Cake", 3, 6) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
+        app.updateQuality();
 
-        assertThat(app.items[0].sellIn).isEqualTo(9);
-        assertThat(app.items[0].quality).isEqualTo(8);
+        assertThat(app.items[0].sellIn).isEqualTo(1);
+        assertThat(app.items[0].quality).isEqualTo(2);
     }
 }
