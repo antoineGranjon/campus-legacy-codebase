@@ -51,7 +51,12 @@ public class GildedRose {
             }
 
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
+                if (items[i].name.contains("Conjured")) {
+
+                } else {
+                    items[i].sellIn = items[i].sellIn - 1;
+
+                }
             }
             logger.info("If sellIn # sulfuras || Item : " + items[i].name + " | Quality : " + items[i].quality);
             logger.info("If sellIn # sulfuras || Item : " + items[i].name + " | SellIn : " + items[i].sellIn);
