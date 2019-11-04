@@ -65,7 +65,7 @@ public class GildedRose {
                             }
                         }
                     } else {
-                        items[i].quality = items[i].quality - 2;
+                        items[i].quality = items[i].quality - items[i].quality;
                     }
                 } else {
                     if (items[i].quality < 50) {
