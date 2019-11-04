@@ -26,8 +26,8 @@ public class GildedRose {
                         }
                     }
                 }
-                logger.info("If quality > 0 || Item : " + items[i].name + " | Quality : " + items[i].quality);
-                logger.info("If quality  > 0  || Item : " + items[i].name + " | SellIn : " + items[i].sellIn);
+                logger.info("If sellIn <0 || Item : " + items[i].name + " | Quality : " + items[i].quality +" | SellIn : " + items[i].sellIn);
+
             } else {
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
@@ -46,8 +46,8 @@ public class GildedRose {
                         }
                     }
                 }
-                logger.info("If quality < 50 || Item : " + items[i].name + " | Quality : " + items[i].quality);
-                logger.info("If quality < 50 || Item : " + items[i].name + " | SellIn : " + items[i].sellIn);
+                logger.info("If sellIn <0 || Item : " + items[i].name + " | Quality : " + items[i].quality +" | SellIn : " + items[i].sellIn);
+
             }
 
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -55,8 +55,8 @@ public class GildedRose {
                     items[i].sellIn = items[i].sellIn - 1;
                 }
             }
-            logger.info("If sellIn # sulfuras || Item : " + items[i].name + " | Quality : " + items[i].quality);
-            logger.info("If sellIn # sulfuras || Item : " + items[i].name + " | SellIn : " + items[i].sellIn);
+            logger.info("If sellIn <0 || Item : " + items[i].name + " | Quality : " + items[i].quality +" | SellIn : " + items[i].sellIn);
+
 
             if (items[i].sellIn < 0) {
                 if (!items[i].name.equals("Aged Brie")) {
@@ -75,8 +75,7 @@ public class GildedRose {
                     }
                 }
             }
-            logger.info("If sellIn <0 || Item : " + items[i].name + " | Quality : " + items[i].quality);
-            logger.info("If sellIn <0 || Item : " + items[i].name + " | SellIn : " + items[i].sellIn);
+            logger.info("If sellIn <0 || Item : " + items[i].name + " | Quality : " + items[i].quality +" | SellIn : " + items[i].sellIn);
         }
     }
 
