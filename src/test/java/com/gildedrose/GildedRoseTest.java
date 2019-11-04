@@ -55,11 +55,11 @@ class GildedRoseTest {
     @Test
     void conjured() {
         Item[] items = new Item[]{
-                new Item("Conjured Mana Cake", -4, 19) };
+                new Item("Conjured Mana Cake", -4, 20) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
 
         assertThat(app.items[0].sellIn).isEqualTo(-5);
-        assertThat(app.items[0].quality).isEqualTo(17);
+        assertThat(app.items[0].quality).isEqualTo(16);
     }
 }

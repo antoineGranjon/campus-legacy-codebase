@@ -15,21 +15,17 @@ public class GildedRose {
 
 
         for (int i = 0; i < items.length; i++) {
-
+            logger.debug(items[i].name + "," + items[i].quality + "," + items[i].sellIn + " DEBUT");
             if (!items[i].name.equals("Aged Brie") && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (items[i].quality > 0) {
                     if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                         if (items[i].name.contains("Conjured")) {
                             items[i].quality = items[i].quality - 2;
-                            logger.info("If conjured add quality || Item : " + items[i].name + " | Quality : " + items[i].quality + " | SellIn : " + items[i].sellIn);
-
                         } else {
                             items[i].quality = items[i].quality - 1;
                         }
                     }
                 }
-                logger.info("If quality < 0 || Item : " + items[i].name + " | Quality : " + items[i].quality + " | SellIn : " + items[i].sellIn);
-
             } else {
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
@@ -48,9 +44,8 @@ public class GildedRose {
                         }
                     }
                 }
-                logger.info("If quality <50 || Item : " + items[i].name + " | Quality : " + items[i].quality + " | SellIn : " + items[i].sellIn);
-
             }
+            logger.info("If first if || Item : " + items[i].name + " | Quality : " + items[i].quality + " | SellIn : " + items[i].sellIn);
 
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                 items[i].sellIn = items[i].sellIn - 1;
@@ -62,7 +57,10 @@ public class GildedRose {
                 if (!items[i].name.equals("Aged Brie")) {
                     if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (items[i].quality > 0) {
-                            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros") && !items[i].name.contains("Conjured")) {
+                            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+                                items[i].quality = items[i].quality - 1;
+                            }
+                            if(items[i].name.contains("Conjured")){
                                 items[i].quality = items[i].quality - 1;
                             }
                         }
@@ -76,7 +74,9 @@ public class GildedRose {
                 }
             }
             logger.info("If sellIn <0 || Item : " + items[i].name + " | Quality : " + items[i].quality + " | SellIn : " + items[i].sellIn);
+            logger.debug(items[i].name + "," + items[i].quality + "," +  items[i].sellIn + " fin");
         }
+
     }
 
     public Item[] getItems() {
