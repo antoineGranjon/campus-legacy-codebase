@@ -56,6 +56,7 @@ public class GildedRose {
                 if (quality > 0) {
                     logger.info("Conjured item quality > 0 || quality - 2");
                     quality = quality - 2;
+
                 }
                 if (sellIn < 0) {
                     if (quality > 0) {
