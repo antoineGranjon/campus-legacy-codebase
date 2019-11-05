@@ -19,10 +19,12 @@ public class GildedRose {
             int sellIn = items[i].sellIn;
             int quality = items[i].quality;
 
-            sellIn--;
+            if(!items[i].name.equals("Sulfuras, Hand of Ragnaros")){
+                sellIn--;
+            }
+
             if (items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                logger.info("Sulfuras item || sellIn + 1");
-                sellIn++;
+                logger.info("Sulfuras item");
             } else if (items[i].name.equals("Aged Brie")) {
                 if (quality < 50) {
                     if (sellIn < 0) {
