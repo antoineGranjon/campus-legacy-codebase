@@ -3,10 +3,12 @@ package com.gildedrose;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GildedRose {
-    Item[] items;
 
-    public static final Logger logger = LoggerFactory.getLogger(GildedRose.class);
+public class GildedRose {
+
+    static Logger logger = LoggerFactory.getLogger(GildedRose.class);
+
+    Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -15,17 +17,15 @@ public class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             logger.info("Début | item: " + items[i].name + ", sellIn : " + items[i].sellIn + ", quality :  " + items[i].quality);
-
-            int sellIn = items[i].sellIn;
             int quality = items[i].quality;
-
+            int sellIn = items[i].sellIn;
             if(!items[i].name.equals("Sulfuras, Hand of Ragnaros")){
-                logger.info("Not sulfuras || sellIn - 1");
+                logger.info("dans tous les cas sauf sulfuras: sellIn - 1");
                 sellIn--;
             }
 
             if (items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                logger.info("Sulfuras");
+                logger.info("si sulfuras : sellIn inchangé");
             } else if (items[i].name.equals("Aged Brie")) {
                 if (quality < 50) {
                     if (sellIn < 0) {
@@ -33,70 +33,62 @@ public class GildedRose {
                         quality = quality + 2;
                     } else {
                         logger.info("Aged brie, quality < 50, sellIn > 0 || quality + 1");
-                        quality++;
+                        quality = quality + 1;
                     }
                 }
             } else if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-
+                logger.info("Backstage passes, quality + 1");
                 if (sellIn <= 0) {
-                    logger.info("Backstage sellIn <= 0 || quality = 1");
+                    logger.info("Backstage passes, sellIN <=0 || quality=0");
                     quality = 0;
                 } else {
-                    if (items[i].sellIn < 11) {
-                        if (quality < 50) {
-                            logger.info("Backstage sellIn < 11, quality < 50 || quality + 2");
-                            quality = quality + 2;
-                        }
+                    if (sellIn < 11) {
+                        logger.info("Backstage passes, sellIN <11 || quality + 1");
+                        quality = quality + 2;
                     }
-                    if (items[i].sellIn < 6) {
-                        if (quality < 50) {
-                            logger.info("Backstage sellIn < 6, quality < 50 || quality + 3");
-                            quality ++;
-                        }
+                    if (sellIn < 6) {
+                        logger.info("Backstage passes, sellIN <6 || quality + 2");
+                        quality = quality + 1;
                     }
-                    if (items[i].sellIn > 10) {
-                        if (quality < 50) {
-                            logger.info("Backstage sellIn < 6, quality < 50 || quality + 3");
-                            quality ++;
-                        }
+                    if (sellIn  > 10) {
+                        logger.info("Backstage passes, sellIN <6 || quality + 2");
+                        quality = quality + 1;
                     }
                 }
             } else if (items[i].name.startsWith("Conjured")) {
                 if (quality > 0) {
-                    logger.info("Conjured item quality > 0 || quality - 2");
+                    logger.info("Conjured, quality >0 || quality -2 ");
                     quality = quality - 2;
-                    quality = qualityNegativeCheck(quality);
+                    quality = checkNegativeQuality(quality);
                 }
                 if (sellIn < 0) {
                     if (quality > 0) {
-                        logger.info("Conjured item sellIn < 0, quality > 0 || quality - 2");
+                        logger.info("Conjured, sellIn < 0 && quality >0 || quality -2 ");
                         quality = quality - 2;
-                        quality = qualityNegativeCheck(quality);
+                        quality = checkNegativeQuality(quality);
                     }
                 }
             } else {
                 if (quality > 0) {
-                    logger.info("Normal item quality > 0 || quality - 1");
-                    quality--;
-                    quality = qualityNegativeCheck(quality);
+                    logger.info("normal, quality > 0 || quality -1 ");
+                    quality = quality - 1;
+                    quality = checkNegativeQuality(quality);
                 }
                 if (sellIn < 0) {
-                    if (quality > 0) {
-                        logger.info("Normal item sellIn < 0, quality > 0 || quality - 1");
-                        quality--;
-                        quality = qualityNegativeCheck(quality);
-                    }
+                    logger.info("normal, sellIn < 0 || quality -1 ");
+                    quality = quality - 1;
+                    quality = checkNegativeQuality(quality);
                 }
             }
             items[i].sellIn = sellIn;
             items[i].quality = quality;
-
-            logger.info("Fin | item: " + items[i].name + ", sellIn : " + items[i].sellIn + ", quality :  " + items[i].quality);
+            logger.info("FIN | item: " + items[i].name + ", sellIn : " + items[i].sellIn + ", quality :  " + items[i].quality);
         }
+
     }
 
-    private int qualityNegativeCheck(int quality) {
-        if(quality<0){
+    private int checkNegativeQuality(int quality) {
+        if(quality < 0 ){
             quality = 0;
         }
         return quality;

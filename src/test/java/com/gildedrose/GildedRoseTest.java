@@ -7,6 +7,14 @@ import org.junit.jupiter.api.Test;
 class GildedRoseTest {
 
     @Test
+    void noName() {
+        Item[] items = new Item[] { new Item("item", 10, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertThat(app.items[0].name).isNotEmpty();
+    }
+
+    @Test
     void itemQualityShouldDecreaseByOne() {
         Item[] items = new Item[] { new Item("item", 10, 10) };
         GildedRose app = new GildedRose(items);
@@ -94,6 +102,4 @@ class GildedRoseTest {
         app.updateQuality();
         assertThat(app.items[0].quality).isEqualTo(0);
     }
-
-
 }
