@@ -68,7 +68,7 @@ public class GildedRose {
                         quality = checkNegativeQuality(quality);
                     }
                 }
-            } else if (items[i].name.equals(" Red red Wine")) {
+            } else if (items[i].name.equals("Red red Wine")) {
                 if(sellIn > 300 && sellIn < 600){
                     logger.info("Red wine entre 300 et 600 || quality + 1 ");
                     quality++;
