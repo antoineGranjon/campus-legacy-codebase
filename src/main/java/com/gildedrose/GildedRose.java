@@ -98,7 +98,8 @@ public class GildedRose {
     }
 
     private int checkNegativeQuality(int quality) {
-        if (quality < 0) {
+        logger.info("CheckNegativeQuality");
+        if (quality <= 0) {
             quality = 0;
         }
         return quality;
