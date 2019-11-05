@@ -54,6 +54,12 @@ public class GildedRose {
                             quality ++;
                         }
                     }
+                    if (items[i].sellIn > 10) {
+                        if (quality < 50) {
+                            logger.info("Backstage sellIn < 6, quality < 50 || quality + 3");
+                            quality ++;
+                        }
+                    }
                 }
             } else if (items[i].name.startsWith("Conjured")) {
                 if (quality > 0) {
