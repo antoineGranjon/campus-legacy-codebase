@@ -8,11 +8,10 @@ class GildedRoseTest {
 
     @Test
     void redWine() {
-        Item[] items = new Item[] { new Item("Red red Wine", -300, 0) };
+        Item[] items = new Item[] { new Item("Red red Wine", 306, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertThat(app.items[0].quality).isEqualTo(0);
-        assertThat(app.items[0].sellIn).isEqualTo(-301);
+        assertThat(app.items[0].quality).isEqualTo(1);
     }
 
     @Test
