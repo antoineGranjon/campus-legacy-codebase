@@ -69,14 +69,13 @@ public class GildedRose {
                     }
                 }
             } else if (items[i].name.equals("Red red Wine")) {
-                if(sellIn > 300 && sellIn < 600){
+                if (sellIn > 300 && sellIn < 600) {
                     logger.info("Red wine entre 300 et 600 || quality + 1 ");
                     quality++;
-                }else if(sellIn > 0 && sellIn < 300){
-                    logger.info("Red wine entre 0 et 300 || rien ");
-                }else if(sellIn < 0){
+                }
+                if (sellIn < 0) {
                     logger.info("Red wine négatif || quality - 1 ");
-                    quality --;
+                    quality--;
                     quality = checkNegativeQuality(quality);
                 }
             } else {
