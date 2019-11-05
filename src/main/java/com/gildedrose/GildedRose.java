@@ -37,22 +37,21 @@ public class GildedRose {
                     }
                 }
             } else if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                logger.info("Backstage  || quality + 1");
-                quality++;
+
                 if (sellIn <= 0) {
                     logger.info("Backstage sellIn <= 0 || quality = 1");
                     quality = 0;
                 } else {
                     if (items[i].sellIn < 11) {
                         if (quality < 50) {
-                            logger.info("Backstage sellIn < 11, quality < 50 || quality + 1");
-                            quality++;
+                            logger.info("Backstage sellIn < 11, quality < 50 || quality + 2");
+                            quality = quality + 2;
                         }
                     }
                     if (items[i].sellIn < 6) {
                         if (quality < 50) {
-                            logger.info("Backstage sellIn < 6, quality < 50 || quality + 1");
-                            quality++;
+                            logger.info("Backstage sellIn < 6, quality < 50 || quality + 3");
+                            quality ++;
                         }
                     }
                 }
