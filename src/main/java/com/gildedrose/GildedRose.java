@@ -21,7 +21,8 @@ public class GildedRose {
 
             sellIn--;
             if (items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                logger.info("Sulfuras item, nothing to do");
+                logger.info("Sulfuras item || sellIn + 1");
+                sellIn++;
             } else if (items[i].name.equals("Aged Brie")) {
                 if (quality < 50) {
                     if (sellIn < 0) {
