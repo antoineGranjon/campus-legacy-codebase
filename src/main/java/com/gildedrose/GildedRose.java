@@ -59,23 +59,26 @@ public class GildedRose {
                 if (quality > 0) {
                     logger.info("Conjured item quality > 0 || quality - 2");
                     quality = quality - 2;
-
+                    quality = qualityNegativeCheck(quality);
                 }
                 if (sellIn < 0) {
                     if (quality > 0) {
                         logger.info("Conjured item sellIn < 0, quality > 0 || quality - 2");
                         quality = quality - 2;
+                        quality = qualityNegativeCheck(quality);
                     }
                 }
             } else {
                 if (quality > 0) {
                     logger.info("Normal item quality > 0 || quality - 1");
                     quality--;
+                    quality = qualityNegativeCheck(quality);
                 }
                 if (sellIn < 0) {
                     if (quality > 0) {
                         logger.info("Normal item sellIn < 0, quality > 0 || quality - 1");
                         quality--;
+                        quality = qualityNegativeCheck(quality);
                     }
                 }
             }
@@ -84,6 +87,13 @@ public class GildedRose {
 
             logger.info("Fin | item: " + items[i].name + ", sellIn : " + items[i].sellIn + ", quality :  " + items[i].quality);
         }
+    }
+
+    private int qualityNegativeCheck(int quality) {
+        if(quality<0){
+            quality = 0;
+        }
+        return quality;
     }
 
     public Item[] getItems() {
