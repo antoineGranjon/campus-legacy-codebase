@@ -19,7 +19,7 @@ public class GildedRose {
             logger.info("Début | item: " + items[i].name + ", sellIn : " + items[i].sellIn + ", quality :  " + items[i].quality);
             int quality = items[i].quality;
             int sellIn = items[i].sellIn;
-            if(!items[i].name.equals("Sulfuras, Hand of Ragnaros")){
+            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                 logger.info("dans tous les cas sauf sulfuras: sellIn - 1");
                 sellIn--;
             }
@@ -50,7 +50,7 @@ public class GildedRose {
                         logger.info("Backstage passes, sellIN <6 || quality + 2");
                         quality = quality + 1;
                     }
-                    if (sellIn  > 10) {
+                    if (sellIn > 10) {
                         logger.info("Backstage passes, sellIN <6 || quality + 2");
                         quality = quality + 1;
                     }
@@ -67,6 +67,17 @@ public class GildedRose {
                         quality = quality - 2;
                         quality = checkNegativeQuality(quality);
                     }
+                }
+            } else if (items[i].name.equals("Red red Wine")) {
+                if(sellIn > 300 && sellIn < 600){
+                    logger.info("Red wine entre 300 et 600 || quality + 1 ");
+                    quality++;
+                }else if(sellIn > 0 && sellIn < 300){
+                    logger.info("Red wine entre 0 et 300 || rien ");
+                }else if(sellIn < 0){
+                    logger.info("Red wine négatif || quality - 1 ");
+                    quality --;
+                    quality = checkNegativeQuality(quality);
                 }
             } else {
                 if (quality > 0) {
@@ -88,7 +99,7 @@ public class GildedRose {
     }
 
     private int checkNegativeQuality(int quality) {
-        if(quality < 0 ){
+        if (quality < 0) {
             quality = 0;
         }
         return quality;
